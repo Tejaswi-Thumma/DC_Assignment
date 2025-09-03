@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Logic Simplifier & Verilog Generator</title>
+    <link rel="stylesheet" href="style_1.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔹 Digital Logic Simplifier</h1>
+            <p>Truth Table → K-Map → Simplified Expression → Verilog Code</p>
+        </div>
+
+        <div class="main-content">
+            <!-- Truth Table Section -->
+            <div class="section full-width">
+                <h2>📋 Truth Table Input</h2>
+                <div class="controls">
+                    <label for="var-count">Number of Variables:</label>
+                    <select id="var-count">
+                        <option value="2">2 Variables</option>
+                        <option value="3" selected>3 Variables</option>
+                        <option value="4">4 Variables</option>
+                        <option value="5">5 Variables</option>
+                    </select>
+                    <button onclick="generateTruthTable()">Generate Table</button>
+                    <button onclick="clearTable()">Clear All</button>
+                    <button onclick="randomFill()">Random Fill</button>
+                </div>
+                <div id="truth-table-container"></div>
+            </div>
+
+            <!-- K-Map Section -->
+            <div class="section">
+                <h2>🗂️ Karnaugh Map</h2>
+                <div id="kmap-container"></div>
+            </div>
+
+            <!-- Simplified Expression Section -->
+            <div class="section">
+                <h2>⚡ Simplified Expression</h2>
+                <div class="expression-display">
+                    <h4>Boolean Expression:</h4>
+                    <div id="raw-expression">F = 0</div>
+                    <div class="math-display" id="latex-expression">$$F = 0$$</div>
+                </div>
+            </div>
+
+            <!-- Verilog Module Section -->
+            <div class="section full-width">
+                <h2>🔧 Verilog Module</h2>
+                <div class="code-block" id="verilog-code">
+// Generate a truth table first
+                </div>
+                <div class="code-actions">
+                    <button class="copy-btn" onclick="copyToClipboard('verilog-code')">📋 Copy Module</button>
+                    <button class="download-btn" onclick="downloadFile('circuit.v', 'verilog-code')">⬇️ Download .v</button>
+                </div>
+            </div>
+
+            <!-- Verilog Testbench Section -->
+            <div class="section full-width">
+                <h2>🧪 Verilog Testbench</h2>
+                <div class="code-block" id="testbench-code">
+// Generate a truth table first
+                </div>
+                <div class="code-actions">
+                    <button class="copy-btn" onclick="copyToClipboard('testbench-code')">📋 Copy Testbench</button>
+                    <button class="download-btn" onclick="downloadFile('tb_circuit.v', 'testbench-code')">⬇️ Download TB</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="status-message" id="status-message"></div>
+
+    <!-- Configure MathJax -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$']],
+                displayMath: [['$$', '$$']]
+            }
+        };
+    </script>
+    
+    <script src="main_1.js"></script>
+</body>
+</html>
